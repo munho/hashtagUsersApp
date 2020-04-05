@@ -15,3 +15,4 @@ struct User : Decodable{
     var username : String
     var website : String
 }
+

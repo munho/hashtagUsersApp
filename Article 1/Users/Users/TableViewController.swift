@@ -10,11 +10,10 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var users : [User] = []
 
     fileprivate func setUpTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 150
@@ -23,7 +22,6 @@ class TableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        users = fetchData()
         setUpTableView()
     }
 
@@ -34,27 +32,25 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return 10
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! UserCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.layer.cornerRadius = 15
-        let user = users[indexPath.row]
-        cell.set(res : user)
+        let t:Int = indexPath.row
+        if(t%2==0)
+        {
+            cell.backgroundColor = .systemPink
+        }
+        else
+        {
+            cell.backgroundColor = .systemTeal
+        }
         return cell
     }
 
 }
 
-extension TableViewController {
-    
-    func fetchData() -> [User] {
-        let info1 = User(id: 1, name: "Dhruvik", username: "Syndicate", website: "Dhruvik.com")
-        let info2 = User(id: 2, name: "Nitigya", username: "Itsnitigya", website: "Nitigya.com")
-        return [info1,info2]
-    }
-    
-}
 
