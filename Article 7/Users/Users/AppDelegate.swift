@@ -17,10 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //do nothing we will have a code in SceneceDelegate for this
         }
         else {
-            let navigationController = UINavigationController(rootViewController: TableViewController())
             window = UIWindow(frame: UIScreen.main.bounds)
-            navigationController.navigationBar.prefersLargeTitles = true
-            window?.rootViewController = navigationController
+            window?.rootViewController = TableViewController()
             window?.makeKeyAndVisible()
         }
         return true

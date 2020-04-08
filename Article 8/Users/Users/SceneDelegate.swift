@@ -14,17 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-            guard let windowScene = (scene as? UIWindowScene) else { return }
-            self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-            window?.windowScene = windowScene
-            let navigationController = UINavigationController(rootViewController: TableViewController())
-            navigationController.navigationBar.prefersLargeTitles = true
-            window?.rootViewController = navigationController
-            window?.makeKeyAndVisible()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window = window
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = MasterTabBarController()
+        window?.makeKeyAndVisible()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = window
     }
-    
+
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -55,5 +53,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
 
 
