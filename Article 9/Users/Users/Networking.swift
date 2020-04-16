@@ -10,7 +10,6 @@ import Foundation
 enum UserError:Error{
     case NoDataAvailable
     case CanNotProcessData
-    case invalidURL
 }
 struct Networking{
     static let sharedInstance = Networking()
@@ -19,10 +18,7 @@ struct Networking{
     let userURL = "https://jsonplaceholder.typicode.com/users"
     
     func getUsers(completion: @escaping(Result<[User],UserError>)->Void) {
-        guard let UserURL=URL(string: userURL) else {
-            completion(.failure(.invalidURL))
-            return
-        }
+        let UserURL=URL(string: userURL)!
         let dataTask=session.dataTask(with: UserURL){data,_,_ in
             guard let jsonData = data else{
                 completion(.failure(.NoDataAvailable))
@@ -40,5 +36,4 @@ struct Networking{
         dataTask.resume()
     }
 }
-
 
