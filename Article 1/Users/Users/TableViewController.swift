@@ -40,14 +40,7 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.layer.cornerRadius = 15
         let t:Int = indexPath.row
-        if(t%2==0)
-        {
-            cell.backgroundColor = .systemPink
-        }
-        else
-        {
-            cell.backgroundColor = .systemTeal
-        }
+        cell.backgroundColor = (t%2==1) ? .systemTeal: .systemPink
         return cell
     }
 
