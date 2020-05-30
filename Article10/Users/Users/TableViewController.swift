@@ -33,8 +33,8 @@ class TableViewController: UITableViewController,PassingUser {
     fileprivate func setUpTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.title = "Users"
-        let camera = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToSecondScreen))
-        self.navigationItem.rightBarButtonItem = camera
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToSecondScreen))
+        self.navigationItem.rightBarButtonItem = add
         tableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
         tableView.dataSource = self
         tableView.delegate = self

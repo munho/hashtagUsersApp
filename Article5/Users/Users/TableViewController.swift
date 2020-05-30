@@ -21,6 +21,8 @@ class TableViewController: UITableViewController {
     fileprivate func setUpTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToSecondScreen))
+        self.navigationItem.rightBarButtonItem = add
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 150
@@ -28,6 +30,12 @@ class TableViewController: UITableViewController {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.title = "Users"
     }
+    
+    @objc func goToSecondScreen(){
+        let sampleScreen = SampleScreen()
+        self.navigationController?.present(sampleScreen, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()

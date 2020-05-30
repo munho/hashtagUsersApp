@@ -35,6 +35,7 @@ class MasterTabBarController: UITabBarController {
     
     fileprivate func setupLayout(){
         tabBar.isTranslucent = true
+        tabBar.barTintColor = UIColor.systemGroupedBackground
     }
 }
 

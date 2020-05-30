@@ -14,6 +14,8 @@ class TableViewController: UITableViewController {
 
     fileprivate func setUpTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToSecondScreen))
+        self.navigationItem.rightBarButtonItem = add
         tableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -28,6 +30,10 @@ class TableViewController: UITableViewController {
         setUpTableView()
     }
 
+    @objc func goToSecondScreen(){
+        let sampleScreen = SampleScreen()
+        self.navigationController?.present(sampleScreen, animated: true)
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
